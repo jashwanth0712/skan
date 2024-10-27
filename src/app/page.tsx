@@ -27,6 +27,7 @@ import { REVIEWS } from "@/utils/constants/misc";
 import { ArrowRightIcon, CreditCardIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import Dashboard from "./dashboard";
 export default function Home() {
   
   return ( <>
@@ -357,7 +358,7 @@ export default function Home() {
       </div>
     </Unauthenticated>
     <Authenticated>
-    <UserForms />
+    <Dashboard />
     </Authenticated>
   </>);
 }
