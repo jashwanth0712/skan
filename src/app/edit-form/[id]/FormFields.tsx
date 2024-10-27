@@ -2,14 +2,14 @@
 import { useQuery, useMutation } from 'convex/react';
 import { api } from '../../../../convex/_generated/api';
 import { Id } from "../../../../convex/_generated/dataModel";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui_copy/table";
+import { Button } from "@/components/ui_copy/button";
+import { Input } from "@/components/ui_copy/input";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui_copy/select";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem } from "@/components/ui_copy/form";
 
 const formSchema = z.object({
   name: z.string(),

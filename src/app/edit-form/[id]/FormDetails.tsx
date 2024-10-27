@@ -4,13 +4,13 @@ import { useQuery, Authenticated, Unauthenticated, useMutation } from 'convex/re
 import { api } from '../../../../convex/_generated/api';
 import { Id } from "../../../../convex/_generated/dataModel";
 import { z} from 'zod';
-import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui/form";
+import { Form, FormControl, FormField, FormItem, FormLabel } from "@/components/ui_copy/form";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { Label } from "@/components/ui/label";
-import { useToast } from "@/components/ui/use-toast";
+import { Input } from "@/components/ui_copy/input";
+import { Button } from "@/components/ui_copy/button";
+import { Label } from "@/components/ui_copy/label";
+import { useToast } from "@/components/ui_copy/use-toast";
 import { useCopyToClipboard } from "react-use";
 
 const formSchema = z.object({

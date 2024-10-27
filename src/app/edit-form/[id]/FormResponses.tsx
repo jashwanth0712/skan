@@ -2,7 +2,7 @@
 import { useState } from "react";
 import { useQuery, Authenticated, Unauthenticated, useMutation } from 'convex/react';
 import { api } from '../../../../convex/_generated/api';
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui_copy/card";
 import { Id } from "../../../../convex/_generated/dataModel";
 
 

@@ -6,7 +6,7 @@ import { ConvexProviderWithClerk } from "convex/react-clerk";
 
 import "./globals.css";
 import Header from "./Header";
-import { Toaster } from "@/components/ui/toaster";
+import { Toaster } from "@/components/ui_copy/toaster";
 
 const inter = Inter({ subsets: ["latin"] });
 

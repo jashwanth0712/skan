@@ -2,13 +2,13 @@
 import { useQuery, useMutation } from 'convex/react';
 import { api } from '../../../../convex/_generated/api';
 import { useState } from 'react';
-import { Button } from '@/components/ui/button';
+import { Button } from '@/components/ui_copy/button';
 import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Form, FormControl, FormField, FormItem, FormLabel } from '@/components/ui_copy/form';
+import { Input } from '@/components/ui_copy/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui_copy/select';
 
 export default function Page({ params }: { params: { id: string } }) {
   const fields = useQuery(api.form_fields.getBySlug, { slug: params.id });
