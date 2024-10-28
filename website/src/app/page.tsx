@@ -28,12 +28,15 @@ import { ArrowRightIcon, CreditCardIcon, StarIcon } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import Dashboard from "./dashboard";
+import Header from "./Header";
 export default function Home() {
   
-  return ( <>
+  return ( <div className="bg-white mx-0 p-0">
       
     <Unauthenticated>
-      <div className="scrollbar-hide size-full overflow-x-hidden">
+	{/* <Header /> */}
+
+      <div className="scrollbar-hide size-full overflow-x-hidden mt-10 bg-black">
 			{/* Hero Section */}
         <MaxWidthWrapper>
           <div
@@ -67,15 +70,13 @@ export default function Home() {
                 </span>
               </p>
               <div className="z-50 flex items-center justify-center gap-4 whitespace-nowrap">
-                <Button asChild>
-                  <Link
-                    href={(true||user) ? "/dashboard" : "/sign-in"}
-                    className="flex items-center"
-                  >
+          		<SignInButton>
+				<Button >
                     Start creating for free
                     <ArrowRightIcon className="ml-2 h-4 w-4" />
-                  </Link>
                 </Button>
+				</SignInButton>
+
               </div>
             </AnimationContainer>
 
@@ -360,5 +361,5 @@ export default function Home() {
     <Authenticated>
     <Dashboard />
     </Authenticated>
-  </>);
+  </div>);
 }

@@ -1,5 +1,6 @@
 "use client";
-import { SignInButton, UserButton } from "@clerk/clerk-react";
+import { Button } from "@/components/ui/button";
+import { SignInButton, SignUpButton, UserButton } from "@clerk/clerk-react";
 import { Authenticated, Unauthenticated, useQuery } from "convex/react";
 import { useState } from "react";
 
@@ -11,11 +12,13 @@ export default function Header() {
   ));
 
   return (
-      <header className="border-b-2 border-blue flex justify-between items-center py-2 px-6">
+      <header className="  flex justify-between items-center py-2 px-6">
         <h1 className="ml-2" ><a href="/" >{rainbowWord}</a></h1>
         <div className="inline-block mr-2">
           <Unauthenticated>
-            <SignInButton/>
+          <SignInButton>
+            <Button>Signin</Button>
+          </SignInButton>
           </Unauthenticated>
           <Authenticated>
             <UserButton />

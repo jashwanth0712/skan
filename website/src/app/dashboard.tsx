@@ -14,6 +14,7 @@ import { Checkbox } from "@/components/ui/checkbox"
 import { ContextMenu, ContextMenuContent, ContextMenuItem, ContextMenuTrigger } from "@/components/ui/context-menu"
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
 import { ChevronRight, Lock, Unlock, Search, Heart, GripVertical, Settings, Layers, History, Database, Pencil, ExternalLink, Trash2, ChevronDown } from 'lucide-react'
+import { UserButton } from '@clerk/clerk-react'
 
 const sidebarData = [
   { 
@@ -215,8 +216,8 @@ export default function Dashboard() {
 
   return (
     <TooltipProvider>
-      <div className="flex h-screen">
-        <div className="flex w-16 flex-col items-center justify-between border-r bg-muted py-4">
+      <div className="flex h-screen  bg-white p-0 m-0 w-[100vw]">
+        <div className="flex w-16 flex-col items-center justify-between border-r  py-4 overflow-hidden fixed h-screen">
           <div className="flex flex-col items-center space-y-4">
             <Tooltip>
               <TooltipTrigger asChild>
@@ -252,21 +253,14 @@ export default function Dashboard() {
               </TooltipContent>
             </Tooltip>
           </div>
-          <Tooltip>
-            <TooltipTrigger asChild>
-              <Button variant="ghost" size="icon" className="h-10 w-10">
-                <Avatar>
-                  <AvatarImage src="/placeholder.svg?height=40&width=40" alt="User" />
-                  <AvatarFallback>JD</AvatarFallback>
-                </Avatar>
-              </Button>
-            </TooltipTrigger>
-            <TooltipContent side="right">
-              <p>User Profile</p>
-            </TooltipContent>
-          </Tooltip>
+          <div className='py-5'>
+          <UserButton />
+          </div>
+
         </div>
-        <ResizablePanelGroup direction="horizontal">
+        <div className='ml-20'>
+
+        <ResizablePanelGroup direction="horizontal" className='fixed'>
           <ResizablePanel defaultSize={20} minSize={15}>
             <div className="flex h-full flex-col">
               <div className="border-b p-4">
@@ -279,8 +273,8 @@ export default function Dashboard() {
             </div>
           </ResizablePanel>
           <ResizablePanel>
-            <div className="flex h-full flex-col">
-              <header className="flex items-center justify-between border-b p-4">
+            <div className="flex h-full flex-col ">
+              <header className="flex items-center justify-around border-b p-4">
                 <div>
                   <h1 className="text-2xl font-bold">{selectedArticle.title}</h1>
                   <div className="flex items-center space-x-2 text-sm text-muted-foreground">
@@ -291,69 +285,71 @@ export default function Dashboard() {
                 </div>
                 <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                   <SheetTrigger asChild>
-                    <Button variant="outline" size="icon" ref={sheetTriggerRef}>
+                    <Button variant="primary" size="icon" ref={sheetTriggerRef}>
                       <Database className="h-4 w-4" />
                       <span className="sr-only">Input Data</span>
                     </Button>
                   </SheetTrigger>
-                  <SheetContent>
+                  <SheetContent className='bg-white'>
                     <SheetHeader>
-                      <SheetTitle>Input Data</SheetTitle>
+                      <SheetTitle className='text-black'>Input Data</SheetTitle>
                     </SheetHeader>
-                    <ScrollArea className="h-[calc(100vh-8rem)] pr-4">
-  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-    {inputData.map((data) => (
-      <Card key={data.id} className="mb-4" ref={(el) => (cardRefs.current[data.id] = el)}>
-        <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
-          <CardTitle className="text-sm font-medium">
-            {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
-          </CardTitle>
-          <Checkbox
-            checked={selectedDataCards.includes(data.id)}
-            onCheckedChange={() => handleDataCardSelect(data.id)}
-          />
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm">
-            {data.type === 'image' ? (
-              <img
-                src={data.content}
-                alt={data.description}
-                className="max-h-40 w-full object-cover"
-              />
-            ) : data.type === 'table' ? (
-              <div className="max-h-40 overflow-auto">
-                <table className="w-full text-xs">
-                  <tbody>
-                    {data.content.map((row, index) => (
-                      <tr key={index}>
-                        {row.map((cell, cellIndex) => (
-                          <td key={cellIndex} className="border p-1">
-                            {cell}
-                          </td>
+                    <ScrollArea className="h-[calc(100vh-8rem)] pr-4 bg-white text-black">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {inputData.map((data) => (
+                          <Card key={data.id} className={`mb-4 bg-white text-black ${selectedDataCards.includes(data.id)?"border shadow-xl":"border-2xl "} `}>
+                            <CardHeader className="bg-white text-black flex flex-row items-start justify-between space-y-0 pb-2">
+                              <CardTitle className="bg-white text-black text-sm font-medium">
+                                {data.type.charAt(0).toUpperCase() + data.type.slice(1)}
+                              </CardTitle>
+                              <Checkbox
+                              className='border-2xl'
+                                checked={selectedDataCards.includes(data.id)}
+                                onCheckedChange={() => handleDataCardSelect(data.id)}
+                              />
+                            </CardHeader>
+                            <CardContent>
+                              <p className="bg-white text-black text-sm">
+                                {data.type === 'image' ? (
+                                  <img
+                                    src={data.content}
+                                    alt={data.description}
+                                    className="max-h-40 w-full object-cover"
+                                  />
+                                ) : data.type === 'table' ? (
+                                  <div className="max-h-40 overflow-auto">
+                                    <table className="w-full text-xs">
+                                      <tbody>
+                                        {data.content.map((row, index) => (
+                                          <tr key={index}>
+                                            {row.map((cell, cellIndex) => (
+                                              <td key={cellIndex} className="border p-1">
+                                                {cell}
+                                              </td>
+                                            ))}
+                                          </tr>
+                                        ))}
+                                      </tbody>
+                                    </table>
+                                  </div>
+                                ) : (
+                                  data.content
+                                )}
+                              </p>
+                            </CardContent>
+                            <CardFooter className="flex justify-between">
+                              <CardDescription>{data.description}</CardDescription>
+                              <Button variant="ghost" size="icon" asChild>
+                                <a href={data.url} target="_blank" rel="noopener noreferrer">
+                                  <ExternalLink className="h-4 w-4" />
+                                </a>
+                              </Button>
+                            </CardFooter>
+                          </Card>
                         ))}
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            ) : (
-              data.content
-            )}
-          </p>
-        </CardContent>
-        <CardFooter className="flex justify-between">
-          <CardDescription>{data.description}</CardDescription>
-          <Button variant="ghost" size="icon" asChild>
-            <a href={data.url} target="_blank" rel="noopener noreferrer">
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </Button>
-        </CardFooter>
-      </Card>
-    ))}
-  </div>
-</ScrollArea>
+                      </div>
+                    </ScrollArea>
+
 
                     {selectedDataCards.length > 0 && (
                       <div className="mt-4 flex justify-end">
@@ -417,6 +413,8 @@ export default function Dashboard() {
             </div>
           </ResizablePanel>
         </ResizablePanelGroup>
+        </div>
+
       </div>
     </TooltipProvider>
   )

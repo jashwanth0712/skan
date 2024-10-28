@@ -26,15 +26,14 @@ export default function RootLayout({
         <link rel="icon" href="https://zany.sh/favicon.svg?emoji=📋"></link>
       </head>
       <body className={inter.className}>
-        <div className="flex flex-col min-h-screen bg-black">
+        <div className="flex flex-col h-screen w-screen bg-black m-0 p-0">
         <ConvexClientProvider>
-        <Header />
-        <main className="container flex-grow mx-auto m-2">
+        <main className="container flex-grow m-0 bg-black p-0">
         {children}
-        </main>
+        </main >
         <Toaster />
         </ConvexClientProvider>
-        <footer className="flex justify-center items-center">Made with ❤️ and&nbsp;<a href="https://convex.dev" target="_blank">Convex</a></footer>
+        {/* <footer className="flex justify-center items-center">Made with ❤️ and&nbsp;<a href="https://convex.dev" target="_blank">Convex</a></footer> */}
         </div>
         </body>
     </html>
